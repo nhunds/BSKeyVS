@@ -1,0 +1,3 @@
+/home/ika/Dokumente/studium/BS/BSKeyVS/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ika/Dokumente/studium/BS/BSKeyVS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ika/Dokumente/studium/BS/BSKeyVS/cmake-build-debug/CMakeFiles/BSKeyVS.dir
