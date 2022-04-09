@@ -27,7 +27,7 @@ int comm(int conn_fd) {
         }
         // Command to lower case
         for(int i = 0; in[i]; i++)
-            tolower(in[i]);
+            in[i] = tolower(in[i]);
         printf("STATUS: Client send: %s", in);
 
         // Interpret command from client
