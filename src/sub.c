@@ -25,6 +25,7 @@ int comm(int conn_fd) {
             perror("ERROR: Can't receive massage from client");
             exit(2);
         }
+        // Command to lower case
         for(int i = 0; in[i]; i++)
             tolower(in[i]);
         printf("STATUS: Client send: %s", in);

@@ -100,6 +100,7 @@ build CMakeFiles/BSKeyVS.dir/src/sub.c.o: C_COMPILER__BSKeyVS_Debug /home/ika/Do
 
 build BSKeyVS: C_EXECUTABLE_LINKER__BSKeyVS_Debug CMakeFiles/BSKeyVS.dir/src/main.c.o CMakeFiles/BSKeyVS.dir/src/keyValStore.c.o CMakeFiles/BSKeyVS.dir/src/sub.c.o
   FLAGS = -g
+  LINK_FLAGS = -rdynamic
   OBJECT_DIR = CMakeFiles/BSKeyVS.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -118,6 +119,11 @@ build BSKeyVS: C_EXECUTABLE_LINKER__BSKeyVS_Debug CMakeFiles/BSKeyVS.dir/src/mai
 # Folder: /home/ika/Dokumente/studium/BS/BSKeyVS/cmake-build-debug
 
 build all: phony BSKeyVS
+
+# =============================================================================
+# Unknown Build Time Dependencies.
+# Tell Ninja that they may appear as side effects of build rules
+# otherwise ordered by order-only dependencies.
 
 # =============================================================================
 # Built-in targets
