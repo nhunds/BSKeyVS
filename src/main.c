@@ -14,7 +14,10 @@ int main() {
     h_t->set(h_t, key_val_constructor("Test_3", "Data_3"));
     h_t->set(h_t, key_val_constructor("Test_4", "Data_4"));
 
-    printf("%s\n", h_t->get(h_t, "Test_0"));
+    h_t->del(h_t, "Test_0");
+    h_t->set(h_t, key_val_constructor("Test_5", "Data_5"));
+
+    printf("%s\n", h_t->get(h_t, "Test_5"));
     printf("%s\n", h_t->get(h_t, "Test_1"));
     printf("%s\n", h_t->get(h_t, "Test_2"));
     printf("%s\n", h_t->get(h_t, "Test_3"));
