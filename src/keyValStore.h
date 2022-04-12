@@ -6,4 +6,9 @@
 #define BSKEYVS_KEYVALSTORE_H
 #include "main.h"
 
+typedef struct Key_Val {
+    char* key;
+    char* val;
+} Key_Val;
+
 #endif //BSKEYVS_KEYVALSTORE_H
