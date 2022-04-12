@@ -23,7 +23,6 @@ Hash_Table* hash_table_constructor(size_t size) {
 
     Hash_Table* h_t = malloc(sizeof(Hash_Table));
     if(h_t == NULL) {
-        free(h_t);
         return NULL;
     }
 
