@@ -36,3 +36,17 @@ Hash_Table* hash_table_constructor(size_t size) {
     return h_t;
 
 }
+
+void hash_table_destructor(Hash_Table* h_t) {
+
+    if(h_t == NULL)
+        return;
+
+    // Free memory allocated for Entry's
+    for (int i = 0; i < h_t->size; i++) {
+        key_val_destructure(h_t->table[i]);
+    }
+
+    free(h_t);
+
+}

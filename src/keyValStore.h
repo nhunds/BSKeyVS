@@ -20,5 +20,6 @@ typedef struct Hash_Table {
 } Hash_Table;
 
 Hash_Table* hash_table_constructor(size_t size);
+void hash_table_destructor(Hash_Table* h_t);
 
 #endif //BSKEYVS_KEYVALSTORE_H
