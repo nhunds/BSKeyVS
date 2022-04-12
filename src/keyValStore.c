@@ -112,7 +112,7 @@ char* hash_table_get(Hash_Table* h_t, char* char_key) {
     key %= h_t->size;
 
     // Start for-loop at hash key
-    for (Key i = key; key < h_t->size; i++) {
+    for (Key i = key; i < h_t->size; i++) {
 
         if(h_t->table[i] == NULL)
             return NULL;
@@ -137,6 +137,39 @@ char* hash_table_get(Hash_Table* h_t, char* char_key) {
 
 }
 
+/*
+ * Deletes entry with key matching char_key and returns 0.
+ * If no matching entry exists returns -2.
+ * If char_key is empty returns -1.
+ * RETURNS:
+ * Returns 0 if matching entry is deleted.
+ * Returns -1 if char_key is empty.
+ * Returns -2 if no matching entry exists.
+ */
+int hash_table_del(Hash_Table* h_t, char* char_key) {
+
+    // For bad char_key return -1
+    if(*char_key == EOF)
+        return -1;
+
+    for (size_t i = 0; i < h_t->size; i++) {
+
+        if(strcmp(h_t->table[i]->key, char_key) == 0) {
+            // Garbage collect multiple equal entry's
+            for (size_t j = i; j < h_t->size; j++) {
+                key_val_destructure(h_t->table[j]);
+                h_t->table[j] = NULL;
+            }
+            return 0;
+        }
+
+    }
+
+    // If no entry found no matching entry exist
+    return -2;
+
+}
+
 Hash_Table* hash_table_constructor(size_t size) {
 
     Hash_Table* h_t = malloc(sizeof(Hash_Table));
@@ -153,6 +186,7 @@ Hash_Table* hash_table_constructor(size_t size) {
 
     h_t->set = hash_table_set;
     h_t->get = hash_table_get;
+    h_t->del = hash_table_del;
 
     return h_t;
 

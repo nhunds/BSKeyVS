@@ -36,6 +36,16 @@ typedef struct Hash_Table {
      * Returns NULL if no matching key-value pair is found
      */
     char* (*get)(struct Hash_Table*, char*);
+    /*
+     * Deletes entry with key matching char_key and returns 0.
+     * If no matching entry exists returns -2.
+     * If char_key is empty returns -1.
+     * RETURNS:
+     * Returns 0 if matching entry is deleted.
+     * Returns -1 if char_key is empty.
+     * Returns -2 if no matching entry exists.
+     */
+    int (*del)(struct Hash_Table*, char*);
 } Hash_Table;
 
 Hash_Table* hash_table_constructor(size_t size);
