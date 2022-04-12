@@ -14,4 +14,9 @@ typedef struct Key_Val {
 Key_Val* key_val_constructor(char* key, char* val);
 void key_val_destructure(Key_Val* k_v);
 
+typedef struct Hash_Table {
+    Key_Val** table;
+    size_t size;
+} Hash_Table;
+
 #endif //BSKEYVS_KEYVALSTORE_H
