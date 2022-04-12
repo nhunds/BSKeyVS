@@ -71,7 +71,7 @@ int hash_table_set(Hash_Table* h_t, Key_Val* k_v) {
     }
 
     // For-loop till generated hash key
-    for (int i = 0; i < key; i++) {
+    for (Key i = 0; i < key; i++) {
 
         // Lock at index i, if NULL store k_v at index and return 0
         if(h_t->table[i] == NULL) {
