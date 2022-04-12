@@ -4,5 +4,6 @@
 
 #ifndef BSKEYVS_KEYVALSTORE_H
 #define BSKEYVS_KEYVALSTORE_H
+#include "main.h"
 
 #endif //BSKEYVS_KEYVALSTORE_H
