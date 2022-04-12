@@ -16,6 +16,7 @@
 #include <netinet/in.h>
 
 #include "sub.h"
+#include "keyValStore.h"
 
 #define PORT 5678
 #define MAX 2000
