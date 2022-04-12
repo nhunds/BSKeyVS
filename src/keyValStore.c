@@ -124,6 +124,7 @@ void hash_table_destructor(Hash_Table* h_t) {
         key_val_destructure(h_t->table[i]);
     }
 
+    free(h_t->table);
     free(h_t);
 
 }
