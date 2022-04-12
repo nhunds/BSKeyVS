@@ -6,7 +6,7 @@
 
 int main() {
 
-    Hash_Table* h_t = hash_table_constructor(5);
+    Hash_Table* h_t = hash_table_constructor(20);
 
     h_t->set(h_t, key_val_constructor("Test_0", "Data_0"));
     h_t->set(h_t, key_val_constructor("Test_1", "Data_1"));
