@@ -4,6 +4,9 @@
 
 #include "keyValStore.h"
 
+// Type vor Hash-Key's
+typedef unsigned int Key;
+
 Key_Val* key_val_constructor(char* key, char* val) {
 
     Key_Val* k_v = malloc(sizeof(Key_Val));
