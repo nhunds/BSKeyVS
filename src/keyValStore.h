@@ -17,6 +17,17 @@ void key_val_destructure(Key_Val* k_v);
 typedef struct Hash_Table {
     Key_Val** table;
     size_t size;
+
+    /*
+     * Sets value of corresponding entry in hash table h_t to val of k_v.
+     * Stores k_v as new entry and destruct k_v if no corresponding entry exists, but free storage.
+     * RETURN:
+     * Returns -1 if k_v is NULL
+     * Returns -2 if hash table is full
+     * Returns 0 if k_v is stored as new entry
+     * Returns 1 if corresponding entry to k_v is found, val in hash table is updated and k_v is destructed
+     */
+    int (*set)(struct Hash_Table*, Key_Val*);
 } Hash_Table;
 
 Hash_Table* hash_table_constructor(size_t size);

@@ -27,10 +27,70 @@ Key hash(char* char_key){
     Key key = 0;
     for (; *char_key; char_key++) {
         key += (int)*char_key;
-        key *= 3;
     }
 
     return key;
+
+}
+
+/*
+ * Sets value of corresponding entry in hash table h_t to val of k_v.
+ * Stores k_v as new entry and destruct k_v if no corresponding entry exists, but free storage.
+ * RETURN:
+ * Returns -1 if k_v is NULL
+ * Returns -2 if hash table is full
+ * Returns 0 if k_v is stored as new entry
+ * Returns 1 if corresponding entry to k_v is found, val in hash table is updated and k_v is destructed
+ */
+int hash_table_set(Hash_Table* h_t, Key_Val* k_v) {
+
+    // For bad k_v return -1
+    if(k_v == NULL)
+        return -1;
+
+    // Generate hash key of key from k_v for hash table h_v
+    Key key = hash(k_v->key);
+    key %= h_t->size;
+
+    // Start for-loop at generated hash key
+    for (Key i = key; i < h_t->size; i++) {
+
+        // Lock at index i, if NULL store k_v at index and return 0
+        if(h_t->table[i] == NULL) {
+            h_t->table[i] = k_v;
+            return 0;
+        }
+
+        // Lock if key at index I is equal to key of k_v, if update val from at index I with val from k_v and return 2
+        if(strcmp(h_t->table[i]->key, k_v->key) == 0) {
+            h_t->table[i]->val = k_v->val;
+            key_val_destructure(k_v);
+            return 1;
+        }
+
+    }
+
+    // For-loop till generated hash key
+    for (int i = 0; i < key; i++) {
+
+        // Lock at index i, if NULL store k_v at index and return 0
+        if(h_t->table[i] == NULL) {
+            h_t->table[i] = k_v;
+            return 0;
+        }
+
+        // Lock if key at index I is equal to key of k_v, if update val from at index I with val from k_v and return 2
+        if(strcmp(h_t->table[i]->key, k_v->key) == 0) {
+            h_t->table[i]->val = k_v->val;
+            key_val_destructure(k_v);
+            return 1;
+        }
+
+    }
+
+    // Hash table is full
+    return -2;
+
 
 }
 
@@ -47,6 +107,8 @@ Hash_Table* hash_table_constructor(size_t size) {
         return NULL;
     }
     h_t->size = size;
+
+    h_t->set = hash_table_set;
 
     return h_t;
 
