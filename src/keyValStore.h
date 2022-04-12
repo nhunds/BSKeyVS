@@ -28,6 +28,14 @@ typedef struct Hash_Table {
      * Returns 1 if corresponding entry to k_v is found, val in hash table is updated and k_v is destructed
      */
     int (*set)(struct Hash_Table*, Key_Val*);
+    /*
+     * Returns value of matching key-value pair for given char_key.
+     * If no matching key-value pair is found it returns NULL
+     * RETURN:
+     * Returns val of key-value pair, if matching key-value pair is found
+     * Returns NULL if no matching key-value pair is found
+     */
+    char* (*get)(struct Hash_Table*, char*);
 } Hash_Table;
 
 Hash_Table* hash_table_constructor(size_t size);

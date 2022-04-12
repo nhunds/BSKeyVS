@@ -94,6 +94,49 @@ int hash_table_set(Hash_Table* h_t, Key_Val* k_v) {
 
 }
 
+/*
+ * Returns value of matching key-value pair for given char_key.
+ * If no matching key-value pair is found it returns NULL
+ * RETURN:
+ * Returns val of key-value pair, if matching key-value pair is found
+ * Returns NULL if no matching key-value pair is found
+ */
+char* hash_table_get(Hash_Table* h_t, char* char_key) {
+
+    // For bad char_key
+    if(*char_key == EOF)
+        return NULL;
+
+    // Generate hash key from char_key for hash table h_v
+    Key key = hash(char_key);
+    key %= h_t->size;
+
+    // Start for-loop at hash key
+    for (Key i = key; key < h_t->size; i++) {
+
+        if(h_t->table[i] == NULL)
+            return NULL;
+
+        if(strcmp(h_t->table[i]->key, char_key) == 0)
+            return h_t->table[i]->val;
+
+    }
+
+    // Run for-loop till hash key
+    for (Key i = 0; i < key; i++) {
+
+        if(h_t->table[i] == NULL)
+            return NULL;
+
+        if(strcmp(h_t->table[i]->key, char_key) == 0)
+            return h_t->table[i]->val;
+
+    }
+
+    return NULL;
+
+}
+
 Hash_Table* hash_table_constructor(size_t size) {
 
     Hash_Table* h_t = malloc(sizeof(Hash_Table));
@@ -109,6 +152,7 @@ Hash_Table* hash_table_constructor(size_t size) {
     h_t->size = size;
 
     h_t->set = hash_table_set;
+    h_t->get = hash_table_get;
 
     return h_t;
 
