@@ -154,11 +154,18 @@ int hash_table_del(Hash_Table* h_t, char* char_key) {
 
     for (size_t i = 0; i < h_t->size; i++) {
 
+        if(h_t->table[i] == NULL)
+            continue;
+
         if(strcmp(h_t->table[i]->key, char_key) == 0) {
             // Garbage collect multiple equal entry's
             for (size_t j = i; j < h_t->size; j++) {
-                key_val_destructure(h_t->table[j]);
-                h_t->table[j] = NULL;
+                if(h_t->table[j] == NULL)
+                    continue;
+                if(strcmp(h_t->table[i]->key, char_key) == 0) {
+                    key_val_destructure(h_t->table[j]);
+                    h_t->table[j] = NULL;
+                }
             }
             return 0;
         }
