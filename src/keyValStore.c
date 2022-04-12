@@ -22,6 +22,18 @@ void key_val_destructure(Key_Val* k_v) {
     free(k_v);
 }
 
+Key hash(char* char_key){
+
+    Key key = 0;
+    for (; *char_key; char_key++) {
+        key += (int)*char_key;
+        key *= 3;
+    }
+
+    return key;
+
+}
+
 Hash_Table* hash_table_constructor(size_t size) {
 
     Hash_Table* h_t = malloc(sizeof(Hash_Table));
