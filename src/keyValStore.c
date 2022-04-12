@@ -12,3 +12,7 @@ Key_Val* key_val_constructor(char* key, char* val) {
     k_v->val = val;
 
 }
+
+void key_val_destructure(Key_Val* k_v) {
+    free(k_v);
+}
