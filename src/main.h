@@ -15,7 +15,6 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
-#include "sub.h"
 #include "keyValStore.h"
 
 #define PORT 5678

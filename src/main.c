@@ -3,11 +3,13 @@
 //
 
 #include "main.h"
+#include "sub.h"
 
 int main() {
 
-    Hash_Table* h_t = hash_table_constructor(20);
+    Hash_Table* h_t = hash_table_constructor(1000);
 
+    /*
     h_t->set(h_t, key_val_constructor("Test_0", "Data_0"));
     h_t->set(h_t, key_val_constructor("Test_1", "Data_1"));
     h_t->set(h_t, key_val_constructor("Test_2", "Data_2"));
@@ -24,9 +26,10 @@ int main() {
     printf("%s\n", h_t->get(h_t, "Test_4"));
 
     hash_table_destructor(h_t);
+    */
 
-
-/*    h_t->set(h_t, key_val_constructor("Test_0", "Hallo_0"));
+    /*
+    h_t->set(h_t, key_val_constructor("Test_0", "Hallo_0"));
     h_t->set(h_t, key_val_constructor("Test_1", "Hallo_1"));
     h_t->set(h_t, key_val_constructor("Test_2", "Hallo_2"));
     h_t->set(h_t, key_val_constructor("Test_3", "Hallo_3"));
@@ -35,9 +38,10 @@ int main() {
     for(int i = 0; i < 5; i++)
         printf("%s\n", h_t->table[i]->val);
 
-    hash_table_destructor(h_t);*/
+    hash_table_destructor(h_t);
+     */
 
-/*    int serv_fd, conn_fd, serv_run;
+    int serv_fd, conn_fd, serv_run;
     struct sockaddr_in server, client;
     int cli_len = sizeof(client);
 
@@ -77,10 +81,11 @@ int main() {
         }
         printf("STATUS: Connection established");
 
-        serv_run = comm(conn_fd);
+        serv_run = comm(conn_fd, h_t);
     }
 
-    shutdown(serv_fd, SHUT_RDWR);*/
+    shutdown(serv_fd, SHUT_RDWR);
+    hash_table_destructor(h_t);
 
     exit(0);
 }
